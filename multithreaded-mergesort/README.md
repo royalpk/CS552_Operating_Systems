@@ -4,7 +4,8 @@
 * Class: CS552 Operating Systems
 
 ## Overview
- Implementation of multithreaded mergesort using pthread library from the given single threaded version of mergesort. The analysis is also done based on number of threads and speedups, comparision of single thread with multiple thread on various elements.
+Implementation of multithreaded mergesort using pthread library from the given single threaded version of mergesort. 
+The analysis is also done to understand efficiency and effectiveness using number of threads and speedups, and  comparision of single thread with multiple thread on various elements respectively.
  
 
 
