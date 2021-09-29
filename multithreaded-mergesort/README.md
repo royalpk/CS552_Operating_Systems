@@ -14,7 +14,7 @@ lab.c -> updated with new parallel_mergesort function which takes the parameter 
 
 lab.h ->updated with new function protypes created for parallel mergesort implementation
 
-mytest.c ->updated with parallel_mergesort call commenting serial_mergesort.
+mytest.c ->updated with parallel_mergesort call to make sure it include timing results for both the serial and parallel versions of merge sort.
 
 runval.sh -> check valgrind test.
 
