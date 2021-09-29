@@ -1,127 +1,81 @@
-# Overview
+## Project 1 Multithreaded Merge Sort 
 
-In this project, you will implement a multithreaded version of the
-mergesort algorithm using the pthread library.  We have provided you
-with a single-threaded version of mergesort that you will be
-converting to use threads. Makefiles have been provided that you can
-use directly.
+* Author: Royal Pathak
+* Class: CS552 Operating Systems
 
-
-## Learning Objectives
-
-- Take a singled threaded algorithm and safely convert it to threaded
-  to see a performance gain.
-- To gain more experience writing concurrent code.
-- Explore the pthread library
+## Overview
+ Implementation of multithreaded mergesort using pthread library from the given single threaded version of mergesort. The analysis is also done based on number of threads and speedups, comparision of single thread with multiple thread on various elements.
+ 
 
 
-## Book References
+## Manifest
 
-Read these chapters carefully in order to prepare yourself for this project.
+lab.c -> updated with new parallel_mergesort function which takes the parameter elements, first element of array, last element of array, and number of threads.
+lab.h ->updated with new function protypes created for parallel mergesort implementation
+mytest.c ->updated with parallel_mergesort call commenting serial_mergesort.
+runval.sh -> check valgrind test.
+Makefile -> bulid the code such as make/clean
+analysis.xlsx -> this file contain all the data used for the analysis of efficiency and effectiveness.
+speedup.pdf-> pdf file containing the implementation analysis of Efficiency and Effectiveness of multithreading in case of mergesort.
 
-- [Intro to Threads](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf)
-- [Threads API](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-api.pdf)
+## Building the project
 
-## Make Concurrent
 
-Convert the serial mergesort code to use multiple threads using the
-pthread library. Your program should limit the number of threads it
-uses via a command line argument (for example, this could be the total
-number of threads or number of levels before cutting off new thread
-generation). You must get a speedup of at least 2 with 4 or more cores
-to get full credit on this project.  Use n = 100,000,000 elements for
-your testing.
+[royalpathak@onyxnode08 multithreaded-mergesort]$ make clean
+rm -f *.o *.d *.gcno *.gcda *.gcov libmylab.so mytests
+[royalpathak@onyxnode08 multithreaded-mergesort]$ make
+gcc -Wall -Wextra -Wpointer-arith -Wstrict-prototypes -std=gnu89 -fPIC -MMD -MP   -c -o lab.o lab.c
+gcc -Wall -Wextra -Wpointer-arith -Wstrict-prototypes -std=gnu89 -fPIC -MMD -MP -shared lab.o -o libmylab.so
+gcc -Wall -Wextra -Wpointer-arith -Wstrict-prototypes -std=gnu89 -fPIC -MMD -MP   -c -o mytests.o mytests.c
+gcc -Wall -Wextra -Wpointer-arith -Wstrict-prototypes -std=gnu89 -fPIC -MMD -MP mytests.o -L. -Wl,-rpath=. -lmylab -lpthread -o mytests
+[royalpathak@onyxnode08 multithreaded-mergesort]$ 
 
-NOTE: Just because you see a speedup of 2 does not guarantee full
-credit. You can easily hardcode the number of threads and hardcode the
-branches to get a speedup of 2. Your code MUST work with a variable
-number of threads!  Simply getting a speedup of 2 does not indicate
-that you did the assignment correctly.
 
-You will need to update mytests.c to accept a number of threads as a
-command line argument. The updated version of mytests should include
-timing results for both the serial and parallel versions of merge
-sort.
 
-## Implementation Analysis (Graduate students only)
+## Features and usage
 
-Create a file named speedup.pdf (in the root directory) that analyses
-the following two aspects of your mergesort solution.
+I have copied the code run in onyx server.we have command line arguments, element and number of threads.It gives us the sorting time done in parallel and serial respectively.
 
-**Efficiency** - Analyse the thread efficiency by examining how the
-threaded implementation’s performance compares to the single threaded
-implementation. Include a chart showing the speedups obtained with
-varying number of threads (from 1 to 8). The speedups should be relative
-to the serial mergesort. Please also note the number of cores on the
-system that you are testing.  All tests cases should be run with 100
-million elements. Please discuss whether the speedup increases
-linearly as the number of threads are increased.
+Here is the copy of output i received:
+[royalpathak@onyxnode08 multithreaded-mergesort]$ ./mytests 100000000 6
+Parallel sorting 100000000 elements took 5.63 seconds.
+Serial sorting 100000000 elements took 11.17 seconds.
+[royalpathak@onyxnode08 multithreaded-mergesort]$ 
 
-**Effectiveness** - Analyse the effectiveness of your threaded
-implementation by comparing sorting time of your threaded solution to
-the single threaded solution. Run both the serial mergesort and
-threaded mergesort with elements in the range from 1,000,000 to
-100,000,000, incrementing by 1M each time.  The threaded version of
-merge sort should be run with 5 threads for all test cases.  Plot the
-timing results in a line chart (google sheets or excel) and compare
-the results. Please discuss whether the threaded version always
-performs better than the serial version.
+## Testing
 
-HINT: You can make the chart using any tool want (excel, google docs,
-etc.) as long as you can create a pdf as your final
-deliverable. Look in the folder example for what your chart should
-look like. Also, it may be useful to add an option to mytests.c to output 
-timing results speedup calculation in a CSV format.  This will make it 
-significantly easier to generate the required data for the implementation 
-analysis report.
+I have run elements in the range from 1,000,000 to 100,000,000, incrementing by 1M each time each time with 5 threads for all test cases.
 
-## Hints
+Also I ran tests cases for 1-8 threads with 100 million elements.
 
-- Do not modify the given serial_mergesort function. Instead create a
-  new parallel_mergesort function that will call serial_mergesort as a
-  base case.
-- You can stop the recursion using the number of levels in the sorting
-  tree or by number of threads. It is simpler to stop it by the number
-  of levels.
+## Known Bugs
 
-## Grading Rubric (for Undergraduate students)
+There are no bugs as per my knowledge.
+Similarly, I have tested the Valgrind check. It has reported no memory leaks or read/write errors in the code.  
+Here is the copy of output i received :
 
-All grading will be executed on onyx.boisestate.edu. Submissions
-that fail to compile will not being graded.
+[royalpathak@onyxnode08 multithreaded-mergesort]$ runval.sh
 
-- [30 pts] Make concurrent
-  - [10 pts] You got a speedup of at least 2 with 4 or more cores 
-  - [10 pts] mytests.c accepts a number of threads (or a number of levels) as a command line argument
-  - [10 pts] Correctly creates new threads
-- [5 pts] Code quality for **lab.c**
-  - [2.5 pts] Code is formatted correctly and follows a consistent style
-  - [2.5 pts] Code is commented when necessary
-- [10 pts] Compiler warnings **ALL files**
-  - Each compiler warning will result in a 3 point deduction.
-  - You are not allowed to suppress warnings
-  - You must build with the flags ```-Wall -Wextra -Wpointer-arith -Wstrict-prototypes -std=gnu89```
-- [5 pts] Valgrind reports no memory leaks or read/write errors
-  - As reported by **runval.sh**
-  - This is a **PASS/FAIL** score. 1 read/write error or leaking 1
-    byte will result in a zero for this section. There is no partial
-    credit for this section.
+==88799== HEAP SUMMARY:
+==88799==     in use at exit: 0 bytes in 0 blocks
+==88799==   total heap usage: 383 allocs, 383 frees, 881,028 bytes allocated
+==88799== 
+==88799== All heap blocks were freed -- no leaks are possible
+==88799== 
+==88799== For lists of detected and suppressed errors, rerun with: -s
+==88799== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 
-## Grading Rubric (for Graduate students)
-- [15 pts] Make concurrent
-  - [5 pts] You got a speedup of at least 2 with 4 or more cores 
-  - [5 pts] mytests.c accepts a number of threads (or a number of levels) as a command line argument
-  - [5 pts] Correctly creates new threads
-- [15 pts] Implementation analysis (speedup.pdf)
-  - Score will reflect the quality of the analysis.
-- [5 pts] Code quality for **lab.c**
-  - [2.5 pts] Code is formatted correctly and follows a consistent style
-  - [2.5 pts] Code is commented when necessary
-- [10 pts] Compiler warnings **ALL files**
-  - Each compiler warning will result in a 3 point deduction.
-  - You are not allowed to suppress warnings
-  - You must build with the flags ```-Wall -Wextra -Wpointer-arith -Wstrict-prototypes -std=gnu89```
-- [5 pts] Valgrind reports no memory leaks or read/write errors
-  - As reported by **runval.sh**
-  - This is a **PASS/FAIL** score. 1 read/write error or leaking 1
-    byte will result in a zero for this section. There is no partial
-    credit for this section.
+
+## Reflection and Self Assessment
+
+I am from Mathematics / Data Science background for long time, so it took time to recollect my C programming skills.Similarly,I would like to appreciate the Book References Chapter 27,Interlude: Thread API which have wonderful explaination for the pthread library and sample code in the book example helped a lot.Furthermore, i came over stackoverflow and blogs which helped me during the development.
+
+
+## Sources used
+Mostly,I have referred to chapter 27:Interlude: Thread API. Also the following sources helps me on my way:
+
+https://stackoverflow.com/questions/48889007/multithreaded-merge-sort-programming
+https://stackoverflow.com/questions/43808114/implementation-of-merge-sort-using-threads-and-fork
+https://malithjayaweera.com/2019/02/parallel-merge-sort/
+https://pages.cs.wisc.edu/~remzi/OSTEP/threads-api.pdf 
+

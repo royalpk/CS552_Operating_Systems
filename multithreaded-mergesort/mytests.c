@@ -120,26 +120,42 @@ int main(int argc, char **argv) {
 	int *A = (int *) malloc(sizeof(int) * (n+1)); // n+1 since we are using A[1]..A[n]
 
 	// generate random input
-
-
 	generate_random_array(A,n, seed);
+	int *temp = A;
 
-	double start_time;
-	double sorting_time;
+	double start_time_1;
+	double sorting_time_1;
 
 	// sort the input (and time it)
-	start_time = getMilliSeconds();
-	//serial_mergesort(A,1,n);
+	start_time_1 = getMilliSeconds();
+	
 	parallel_mergesort(A, 1, n, noOfThread);
-	sorting_time = getMilliSeconds() - start_time;
-
+	sorting_time_1 = getMilliSeconds() - start_time_1;
 	// print results if correctly sorted otherwise cry foul and exit
 	if (check_if_sorted(A,n)) {
-		printf("Sorting %d elements took %4.2lf seconds.\n", n,  sorting_time/1000.0);
+		printf("Parallel sorting %d elements took %4.2lf seconds.\n", n,  sorting_time_1/1000.0);
 	} else {
 		printf("%s: sorting failed!!!!\n", argv[0]);
 		exit(EXIT_FAILURE);
 	}
+
+	double start_time_2;
+	double sorting_time_2;
+
+	// sort the input (and time it)
+	start_time_2 = getMilliSeconds();
+	serial_mergesort(temp, 1, n);
+	sorting_time_2 = getMilliSeconds() - start_time_2;
+	// print results if correctly sorted otherwise cry foul and exit
+	if (check_if_sorted(temp,n)) {
+		printf("Serial sorting %d elements took %4.2lf seconds.\n", n,  sorting_time_2/1000.0);
+	} else {
+		printf("%s: sorting failed!!!!\n", argv[0]);
+		exit(EXIT_FAILURE);
+	}
+
+
+	serial_mergesort(A,1,n);
 	free(A);
 
 	exit(EXIT_SUCCESS);
