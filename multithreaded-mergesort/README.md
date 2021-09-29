@@ -22,6 +22,7 @@ speedup.pdf-> pdf file containing the implementation analysis of Efficiency and 
 
 
 [royalpathak@onyxnode08 multithreaded-mergesort]$ make clean
+
 rm -f *.o *.d *.gcno *.gcda *.gcov libmylab.so mytests
 [royalpathak@onyxnode08 multithreaded-mergesort]$ make
 gcc -Wall -Wextra -Wpointer-arith -Wstrict-prototypes -std=gnu89 -fPIC -MMD -MP   -c -o lab.o lab.c
