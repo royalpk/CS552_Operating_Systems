@@ -24,11 +24,17 @@ speedup.pdf-> pdf file containing the implementation analysis of Efficiency and 
 [royalpathak@onyxnode08 multithreaded-mergesort]$ make clean
 
 rm -f *.o *.d *.gcno *.gcda *.gcov libmylab.so mytests
+
 [royalpathak@onyxnode08 multithreaded-mergesort]$ make
+
 gcc -Wall -Wextra -Wpointer-arith -Wstrict-prototypes -std=gnu89 -fPIC -MMD -MP   -c -o lab.o lab.c
+
 gcc -Wall -Wextra -Wpointer-arith -Wstrict-prototypes -std=gnu89 -fPIC -MMD -MP -shared lab.o -o libmylab.so
+
 gcc -Wall -Wextra -Wpointer-arith -Wstrict-prototypes -std=gnu89 -fPIC -MMD -MP   -c -o mytests.o mytests.c
+
 gcc -Wall -Wextra -Wpointer-arith -Wstrict-prototypes -std=gnu89 -fPIC -MMD -MP mytests.o -L. -Wl,-rpath=. -lmylab -lpthread -o mytests
+
 [royalpathak@onyxnode08 multithreaded-mergesort]$ 
 
 
@@ -38,10 +44,15 @@ gcc -Wall -Wextra -Wpointer-arith -Wstrict-prototypes -std=gnu89 -fPIC -MMD -MP 
 I have copied the code run in onyx server.we have command line arguments, element and number of threads.It gives us the sorting time done in parallel and serial respectively.
 
 Here is the copy of output i received:
+
 [royalpathak@onyxnode08 multithreaded-mergesort]$ ./mytests 100000000 6
+
 Parallel sorting 100000000 elements took 5.63 seconds.
+
 Serial sorting 100000000 elements took 11.17 seconds.
+
 [royalpathak@onyxnode08 multithreaded-mergesort]$ 
+
 
 ## Testing
 
@@ -58,13 +69,21 @@ Here is the copy of output i received :
 [royalpathak@onyxnode08 multithreaded-mergesort]$ runval.sh
 
 ==88799== HEAP SUMMARY:
+
 ==88799==     in use at exit: 0 bytes in 0 blocks
+
 ==88799==   total heap usage: 383 allocs, 383 frees, 881,028 bytes allocated
-==88799== 
+
+==88799==
+ 
 ==88799== All heap blocks were freed -- no leaks are possible
+
 ==88799== 
+
 ==88799== For lists of detected and suppressed errors, rerun with: -s
+
 ==88799== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
 
 
 ## Reflection and Self Assessment
@@ -76,7 +95,11 @@ I am from Mathematics / Data Science background for long time, so it took time t
 Mostly,I have referred to chapter 27:Interlude: Thread API. Also the following sources helps me on my way:
 
 https://stackoverflow.com/questions/48889007/multithreaded-merge-sort-programming
+
 https://stackoverflow.com/questions/43808114/implementation-of-merge-sort-using-threads-and-fork
+
 https://malithjayaweera.com/2019/02/parallel-merge-sort/
+
 https://pages.cs.wisc.edu/~remzi/OSTEP/threads-api.pdf 
+
 
