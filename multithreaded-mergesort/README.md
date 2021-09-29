@@ -11,11 +11,17 @@
 ## Manifest
 
 lab.c -> updated with new parallel_mergesort function which takes the parameter elements, first element of array, last element of array, and number of threads.
+
 lab.h ->updated with new function protypes created for parallel mergesort implementation
+
 mytest.c ->updated with parallel_mergesort call commenting serial_mergesort.
+
 runval.sh -> check valgrind test.
+
 Makefile -> bulid the code such as make/clean
+
 analysis.xlsx -> this file contain all the data used for the analysis of efficiency and effectiveness.
+
 speedup.pdf-> pdf file containing the implementation analysis of Efficiency and Effectiveness of multithreading in case of mergesort.
 
 ## Building the project
