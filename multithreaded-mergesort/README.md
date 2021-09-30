@@ -109,9 +109,6 @@ Serial sorting 10000 elements took 0.02 seconds.
 
 [royalpathak@onyxnode08 multithreaded-mergesort]$ 
 
-==88799== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-
-
 
 ## Reflection and Self Assessment
 
