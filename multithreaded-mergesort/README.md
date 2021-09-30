@@ -52,13 +52,11 @@ I have copied the code run in onyx server.we have command line arguments, elemen
 
 Here is the copy of output i received:
 
-[royalpathak@onyxnode08 multithreaded-mergesort]$ ./mytests 100000000 6
+[royalpathak@onyxnode08 multithreaded-mergesort]$ ./mytests 100000000 7
 
-Parallel sorting 100000000 elements took 5.63 seconds.
+Parallel sorting 100000000 elements took 5.55 seconds.
 
-Serial sorting 100000000 elements took 11.17 seconds.
-
-[royalpathak@onyxnode08 multithreaded-mergesort]$ 
+Serial sorting 100000000 elements took 25.22 seconds.
 
 
 ## Testing
@@ -70,24 +68,46 @@ Also I ran tests cases for 1-8 threads with 100 million elements.
 ## Known Bugs
 
 There are no bugs as per my knowledge.
-Similarly, I have tested the Valgrind check. It has reported no memory leaks or read/write errors in the code.  
+
+Similarly, I have tested the Valgrind check. It has reported no memory leaks or read/write errors in the code.
+
 Here is the copy of output i received :
 
-[royalpathak@onyxnode08 multithreaded-mergesort]$ runval.sh
+[royalpathak@onyxnode08 multithreaded-mergesort]$ runval.sh 
 
-==88799== HEAP SUMMARY:
+==62287== Memcheck, a memory error detector
 
-==88799==     in use at exit: 0 bytes in 0 blocks
+==62287== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
 
-==88799==   total heap usage: 383 allocs, 383 frees, 881,028 bytes allocated
+==62287== Using Valgrind-3.16.0 and LibVEX; rerun with -h for copyright info
 
-==88799==
- 
-==88799== All heap blocks were freed -- no leaks are possible
+==62287== Command: ./mytests 10000 1
 
-==88799== 
+==62287== 
 
-==88799== For lists of detected and suppressed errors, rerun with: -s
+Parallel sorting 10000 elements took 0.02 seconds.
+
+Serial sorting 10000 elements took 0.02 seconds.
+
+==62287== 
+
+==62287== HEAP SUMMARY:
+
+==62287==     in use at exit: 0 bytes in 0 blocks
+
+==62287==   total heap usage: 257 allocs, 257 frees, 641,032 bytes allocated
+
+==62287== 
+
+==62287== All heap blocks were freed -- no leaks are possible
+
+==62287== 
+
+==62287== For lists of detected and suppressed errors, rerun with: -s
+
+==62287== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+[royalpathak@onyxnode08 multithreaded-mergesort]$ 
 
 ==88799== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 

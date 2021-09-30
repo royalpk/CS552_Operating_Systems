@@ -117,12 +117,13 @@ int main(int argc, char **argv) {
 	if (argc == 4)
 		seed = atoi(argv[3]);
 
+	//parallel mergesort 
+
 	int *A = (int *) malloc(sizeof(int) * (n+1)); // n+1 since we are using A[1]..A[n]
 
 	// generate random input
 	generate_random_array(A,n, seed);
-	int *temp = A;
-
+	
 	double start_time_1;
 	double sorting_time_1;
 
@@ -138,6 +139,10 @@ int main(int argc, char **argv) {
 		printf("%s: sorting failed!!!!\n", argv[0]);
 		exit(EXIT_FAILURE);
 	}
+	
+	//serial mergesort
+	int *temp = (int *) malloc(sizeof(int) * (n+1));
+	generate_random_array(temp,n, seed);
 
 	double start_time_2;
 	double sorting_time_2;
@@ -155,8 +160,9 @@ int main(int argc, char **argv) {
 	}
 
 
-	serial_mergesort(A,1,n);
+	
 	free(A);
+	free(temp);
 
 	exit(EXIT_SUCCESS);
 }
