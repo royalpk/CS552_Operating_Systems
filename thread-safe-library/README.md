@@ -75,11 +75,14 @@ gcc -g -O -Wall -MMD  -Iinclude/ -I./list/include/ -o pc-mq pc-mq.o Item.o  -lpt
 
 ## Features and usage
 
-I have copied the output run in onyx server.
+I have copied the output i received when i run in onyx server.
 
 Here is the copy of output i received:
 
-For single queue version
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+For single queue version, i have just copied some part of the output:
+
 
 [royalpathak@onyxnode08 thread-safe-library]$ ./test-pc.sh 
 
@@ -106,6 +109,8 @@ For single queue version
 2 producers 2 consumers 20 items 10 pool size
 
  #items produced = 20   #items consumed = 20 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 For  multiple queues version
@@ -307,6 +312,7 @@ For  multiple queues version
 
 During the final run, I  run the testscripts for both versions of mainfile, test-pc.sh,and test-pc-mq.sh in onyx server . It will working smoothly like charm. 
 
+
 ## Known Bugs
 
 There are no bugs as per my knowledge. NO BUGS during makerun / running scripts/ testing.
@@ -315,12 +321,26 @@ There are no bugs as per my knowledge. NO BUGS during makerun / running scripts/
 
 ## Reflection and Self Assessment
 
-Coming from Mathematics / Data Science background for long time made it hard to recollect my C programming skills. However, I would like to appreciate professor Jidong for his office hours to help me with the
+Coming from Mathematics background for long time made it hard to recollect my C programming skills. 
 
-problems.I got segmentation fault many times but i debug and fixed them. Similarly, i had received race condition in my code. I solved them through adding mutex locks whereever needed. Furthermore,  
+I got segmentation fault many times but i debug and fixed them.
+ 
+I would like to appreciate Dr.Jidong for his office hours to help me with the the debug.
+
+Similarly, i had received race condition in my code while running test shellscripts. I solved them through adding mutex locks which i missed.
+
+Overall, the project was really informative and there was lot of learning curve in the project.  
 
 
 ## Sources used
 
+For most of the help, i have refer to Dr. Jidong office hours but the following links sources also helped me alot to understand. 
 
+http://www.eg.bucknell.edu/~xmeng/Course/CS4334/Example/Pthread/producer-consumer.c
+
+https://stackoverflow.com/questions/40855584/c-producer-consumer-using-pthreads
+
+https://www.cc.gatech.edu/classes/AY2010/cs4210_fall/code/ProducerConsumer.c
+
+https://medium.com/@sohamshah456/producer-consumer-programming-with-c-d0d47b8f103f
 
