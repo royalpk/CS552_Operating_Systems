@@ -3,9 +3,11 @@ Author: Royal Pathak
 Class: CS 552 Operating Systems
 
 Overview
+
 Implementing a simple character driver called booga that supports the open, read and write and close operations with four minor numbers: 0, 1, 2, and 3. We use VMware-based CentOS 7 (64 bit) for testing on a Linux machine with root privilege. The device files are: /dev/booga0, /dev/booga1, /dev/booga2, /dev/booga3.
 
 Manifest
+
 booga.c -> Main class created that contains functionalities for booga device driver.
 
 booga.h -> C header file for the booga.c 
@@ -21,6 +23,7 @@ booga_unload-> for unloading driver to Linux
 Makefile-> bulid the code such as make/clean
 
 Building the project
+
 <pre>[cs453@localhost booga-device-driver]$ make clean
 /bin/rm -f test-booga test-booga.o
 /bin/rm -f .booga* booga.o booga.mod.c booga.mod.o booga.ko Modules.* modules.*
@@ -103,6 +106,7 @@ Attempting to write to booga device
 
 
 <pre>[cs453@localhost booga-device-driver]$ sudo ./booga-test2.sh
+
 [sudo] password for cs453: 
 
 bytes read = 0 
@@ -154,12 +158,15 @@ strings output:
 
 
 Testing
+
 During the final run, I run the both testscripts booga-test1.sh, and booga-test2.sh and got output as expected; run like a charm.
 
 Known Bugs
+
 There are no bugs as per my knowledge. NO BUGS during make / running scripts/ testing.
 
 Reflection and Self Assessment
+
 I started early to make sure I was on the right track. The kernel-level C programming was different, and I had to understand it through an example project given by the professor. Also, the class discussion was very fruitful as I got ideas from classmates about how to approach the task.
 
 The main problem I was stuck in was I was not getting the device driver statistics correct. Later, I realized that I had not used semaphores properly. Also, I appreciate Dr. Jidong's office hours for debugging my issues. 
@@ -170,6 +177,7 @@ Overall, it was a pretty challenging project for me as I come from a Mathematics
 
 
 Sources used
+
 For most of the help, i have refer to example project and Dr. Jidong office hours to debug my issues.
 
 
