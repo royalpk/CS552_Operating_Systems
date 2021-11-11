@@ -1,12 +1,13 @@
-##Project 3 Device Driver
-*Author: Royal Pathak
-*Class: CS 552 Operating Systems
+## Project 3 Device Driver
 
-##Overview
+* Author: Royal Pathak
+* Class: CS 552 Operating Systems
+
+## Overview
 
 Implementing a simple character driver called booga that supports the open, read and write and close operations with four minor numbers: 0, 1, 2, and 3. We use VMware-based CentOS 7 (64 bit) for testing on a Linux machine with root privilege. The device files are: /dev/booga0, /dev/booga1, /dev/booga2, /dev/booga3.
 
-##Manifest
+## Manifest
 
 booga.c -> Main class created that contains functionalities for booga device driver.
 
@@ -22,27 +23,43 @@ booga_unload-> for unloading driver to Linux
 
 Makefile-> bulid the code such as make/clean
 
-##Building the project
+## Building the project
 
 <pre>[cs453@localhost booga-device-driver]$ make clean
+
 /bin/rm -f test-booga test-booga.o
+
 /bin/rm -f .booga* booga.o booga.mod.c booga.mod.o booga.ko Modules.* modules.*
+
 /bin/rm -fr .tmp_versions/
+
 [cs453@localhost booga-device-driver]$ make
+
 make -C /lib/modules/`uname -r`/build M=`pwd` modules
+
 make[1]: Entering directory `/usr/src/kernels/3.10.0-957.el7.x86_64&apos;
+
   CC [M]  /home/cs453/Documents/booga-device-driver/booga.o
+
   Building modules, stage 2.
+
   MODPOST 1 modules
+
   CC      /home/cs453/Documents/booga-device-driver/booga.mod.o
+
   LD [M]  /home/cs453/Documents/booga-device-driver/booga.ko
+
 make[1]: Leaving directory `/usr/src/kernels/3.10.0-957.el7.x86_64&apos;
+
 cc    -c -o test-booga.o test-booga.c
+
 cc  -o test-booga test-booga.o
+
 [cs453@localhost booga-device-driver]$ 
+
 </pre>
 
-##Features and usage
+## Features and usage
 
 I have copied the output i received when i run in CentOS 7 64-bit as instructed.
 
@@ -51,7 +68,9 @@ Here is the copy of output i received:
 For first test shellscript, i have just copied some part of output since its too long
 
 [cs453@localhost booga-device-driver]$ sudo ./booga-test1.sh
+
 [sudo] password for cs453: 
+
  booga returned 0 characters
 
  booga returned 1 characters
@@ -157,15 +176,15 @@ strings output:
 
 
 
-##Testing
+## Testing
 
 During the final run, I run the both testscripts booga-test1.sh, and booga-test2.sh and got output as expected; run like a charm.
 
-##Known Bugs
+## Known Bugs
 
 There are no bugs as per my knowledge. NO BUGS during make / running scripts/ testing.
 
-##Reflection and Self Assessment
+## Reflection and Self Assessment
 
 I started early to make sure I was on the right track. The kernel-level C programming was different, and I had to understand it through an example project given by the professor. Also, the class discussion was very fruitful as I got ideas from classmates about how to approach the task.
 
@@ -176,7 +195,7 @@ Overall, it was a pretty challenging project for me as I come from a Mathematics
 
 
 
-##Sources used
+## Sources used
 
 For most of the help, i have refer to example project and Dr. Jidong office hours to debug my issues.
 
