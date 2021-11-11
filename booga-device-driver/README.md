@@ -63,6 +63,7 @@ cc  -o test-booga test-booga.o
 
 I have copied the output i received when i run in CentOS 7 64-bit as instructed.Here is the copy of output i received.For first test shellscript, i have just copied some part of output since its too long.
 
+<pre>
 [cs453@localhost booga-device-driver]$ sudo ./booga-test1.sh
 [sudo] password for cs453: 
  booga returned 0 characters
@@ -111,7 +112,7 @@ Attempting to write to booga device
  booga returned 200000 characters
 200001
 [cs453@localhost booga-device-driver]$ 
-
+</pre>
 
 <pre>[cs453@localhost booga-device-driver]$ sudo ./booga-test2.sh
 
